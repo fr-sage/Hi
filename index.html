@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>데이터 분석가 포트폴리오 — [본인 성함]</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN (used for Visualization) -->
+  <!-- CDN: https://cdn.jsdelivr.net/npm/chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="데이터 분석가 포트폴리오 - 프로젝트, 기술 스택, 시각화 예시" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="logo" href="#">[본인 성함] — Data Analyst</a>
+      <ul class="nav-links" aria-label="주요 섹션">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#viz">Visualization</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="controls">
+        <button id="theme-toggle" aria-label="Toggle theme">🌗</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero container">
+      <div class="hero-card glass">
+        <h1 class="name">[본인 성함]</h1>
+        <p class="role">데이터 분석가 / 데이터 사이언티스트</p>
+        <p class="tagline">데이터를 통해 문제를 정의하고, 통계적 근거로 실행 가능한 인사이트를 제공합니다.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#projects">포트폴리오 보기</a>
+          <a class="btn ghost" href="#contact">연락하기</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section container">
+      <div class="section-head">
+        <h2>About</h2>
+        <p class="section-sub">요약: 비즈니스 문제 해결 중심의 데이터 분석과 실무 대시보드 경험 보유</p>
+      </div>
+      <div class="glass content">
+        <!-- Rewritten for recruiter: Summary -> Details -> Evidence -->
+        <p class="lead">문제 정의: 매출 하락 및 고객 이탈 문제를 데이터로 규명하고, 실행 가능한 마케팅/서비스 개선안을 제시합니다.</p>
+        <h3>접근 방식</h3>
+        <ul>
+          <li>데이터 수집 및 정제(SQL 기반 ETL)</li>
+          <li>탐색적 데이터 분석(EDA) 및 세그먼테이션(Python, K-Means)</li>
+          <li>시각화를 통한 의사결정 지원(Tableau, Chart.js)</li>
+        </ul>
+        <h3>증거</h3>
+        <p>프로젝트에서 SQL로 분석 데이터셋을 구축하고, Python을 이용한 클러스터링으로 타겟 마케팅을 제안하여 예상 매출 8% 증가 효과를 도출했습니다.</p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section container">
+      <div class="section-head">
+        <h2>Tech Stack</h2>
+        <p class="section-sub">주요 도구 및 언어 (채용 관점에서 바로 확인 가능하도록 정리)</p>
+      </div>
+      <div class="grid">
+        <div class="card glass">
+          <h4>Languages</h4>
+          <p>Python (Pandas, Numpy, Scikit-learn), SQL</p>
+        </div>
+        <div class="card glass">
+          <h4>Visualization</h4>
+          <p>Tableau, Power BI, Matplotlib, Chart.js</p>
+        </div>
+        <div class="card glass">
+          <h4>Tools</h4>
+          <p>Excel, Git, Notion, Slack</p>
+        </div>
+        <div class="card glass">
+          <h4>DB</h4>
+          <p>MySQL, PostgreSQL, BigQuery</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section container">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p class="section-sub">요약 → 상세 → 근거 구조로 정리되어 있습니다. 각 프로젝트는 상세 보기로 분석 과정과 제안을 확인할 수 있습니다.</p>
+      </div>
+
+      <!-- Filters / Tabs -->
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="sql">SQL</button>
+        <button class="filter-btn" data-filter="tableau">Tableau</button>
+        <button class="filter-btn" data-filter="excel">Excel</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: E-commerce segmentation -->
+        <article class="project-card glass" data-tech="python sql tableau">
+          <h3>이커머스 고객 세그먼트 분석 및 마케팅 전략 제안</h3>
+          <p class="proj-summary">Goal: 매출 하락 원인 규명 및 RFM 기반 고객 맞춤 프로모션 제안</p>
+          <ul class="proj-meta">
+            <li><strong>Tech:</strong> SQL, Python (Pandas, Scikit-learn), Tableau</li>
+            <li><strong>Outcome:</strong> 예상 매출 +8% 기여 시나리오</li>
+          </ul>
+          <div class="proj-actions">
+            <button class="btn detail-btn" data-id="p1">자세히 보기</button>
+          </div>
+        </article>
+
+        <!-- Project 2: Placeholder (from README) -->
+        <article class="project-card glass" data-tech="sql excel">
+          <h3>프로젝트 2 — [두 번째 프로젝트 제목]</h3>
+          <p class="proj-summary">Goal: [프로젝트 목표 요약]</p>
+          <ul class="proj-meta">
+            <li><strong>Tech:</strong> SQL, Excel</li>
+            <li><strong>Outcome:</strong> [수치화된 성과]</li>
+          </ul>
+          <div class="proj-actions">
+            <button class="btn detail-btn" data-id="p2">자세히 보기</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Modal for Project Details -->
+      <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-panel glass" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+          <h3 id="modal-title">프로젝트 제목</h3>
+          <div id="modal-body">
+            <!-- Content filled by JS -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Visualization -->
+    <section id="viz" class="section container">
+      <div class="section-head">
+        <h2>Visualization (Demo)</h2>
+        <p class="section-sub">아래 차트는 README 프로젝트 내용을 기반으로 구성한 <strong>데모 데이터(가상 데이터)</strong>입니다.</p>
+      </div>
+      <div class="card glass viz-card">
+        <canvas id="kpiChart" width="800" height="400" aria-label="Monthly revenue and churn demo chart"></canvas>
+      </div>
+      <p class="muted">Note: 데이터는 데모(샘플)이며 실제 프로젝트 제출 시 원본 데이터와 함께 제공합니다.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section container">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="section-sub">채용 담당자를 위한 빠른 연락처</p>
+      </div>
+      <div class="glass contact-card">
+        <p>Email: <a href="mailto:[본인 이메일 주소]">[본인 이메일 주소]</a></p>
+        <p>LinkedIn: <a href="#">[LinkedIn 링크]</a></p>
+        <p>Blog: <a href="#">[Blog 링크]</a></p>
+      </div>
+    </section>
+  </main>
+
+  <button id="backTop" class="back-top" aria-label="Back to top">↑</button>
+
+  <footer class="site-footer">
+    <div class="container small">© [본인 성함] — Data Analyst · Resume on request</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
