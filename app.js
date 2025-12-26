@@ -28,12 +28,14 @@ function initTheme(){
 }
 initTheme();
 
-btnTheme.addEventListener('click', ()=>{
-  const isLight = body.classList.contains('light');
-  const next = isLight ? 'dark' : 'light';
-  applyTheme(next);
-  localStorage.setItem(THEME_KEY, next);
-});
+if(btnTheme){
+  btnTheme.addEventListener('click', ()=>{
+    const isLight = body.classList.contains('light');
+    const next = isLight ? 'dark' : 'light';
+    applyTheme(next);
+    localStorage.setItem(THEME_KEY, next);
+  });
+}
 
 // Smooth scroll for nav links
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
@@ -152,30 +154,39 @@ backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}
 
 // Chart.js visualization (demo data based on README project: e-commerce revenue & churn)
 function renderChart(){
-  const ctx = document.getElementById('kpiChart');
-  if(!ctx) return;
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const revenue = [120,130,115,140,150,160,155,170,165,180,190,210]; // demo
-  const churn = [4.5,4.2,4.8,4.0,3.9,3.7,3.8,3.5,3.6,3.4,3.2,3.0]; // %
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: months,
-      datasets: [
-        { type:'line', label:'Revenue (k)', data: revenue, borderColor:'rgba(124,92,255,0.95)', backgroundColor:'rgba(124,92,255,0.18)', yAxisID:'y'},
-        { type:'bar', label:'Churn Rate (%)', data: churn, backgroundColor:'rgba(0,255,209,0.38)', yAxisID:'y1'}
-      ]
-    },
-    options: {
-      plugins:{tooltip:{mode:'index',intersect:false}},
-      responsive:true, maintainAspectRatio:false,
-      scales:{
-        y:{type:'linear',position:'left',title:{display:true,text:'Revenue (k)'}},
-        y1:{type:'linear',position:'right',grid:{display:false},title:{display:true,text:'Churn (%)'},ticks:{callback: v=>v+"%"}}
-      }
+  try{
+    const ctx = document.getElementById('kpiChart');
+    if(!ctx) return;
+    if(typeof Chart === 'undefined'){
+      // Chart.js failed to load (network/offline). Skip chart render to avoid runtime error.
+      console.warn('Chart.js not available — skipping chart render.');
+      return;
     }
-  });
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const revenue = [120,130,115,140,150,160,155,170,165,180,190,210]; // demo
+    const churn = [4.5,4.2,4.8,4.0,3.9,3.7,3.8,3.5,3.6,3.4,3.2,3.0]; // %
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: months,
+        datasets: [
+          { type:'line', label:'Revenue (k)', data: revenue, borderColor:'rgba(124,92,255,0.95)', backgroundColor:'rgba(124,92,255,0.18)', yAxisID:'y'},
+          { type:'bar', label:'Churn Rate (%)', data: churn, backgroundColor:'rgba(0,255,209,0.38)', yAxisID:'y1'}
+        ]
+      },
+      options: {
+        plugins:{tooltip:{mode:'index',intersect:false}},
+        responsive:true, maintainAspectRatio:false,
+        scales:{
+          y:{type:'linear',position:'left',title:{display:true,text:'Revenue (k)'}},
+          y1:{type:'linear',position:'right',grid:{display:false},title:{display:true,text:'Churn (%)'},ticks:{callback: v=>v+"%"}}
+        }
+      }
+    });
+  }catch(err){
+    console.error('Error rendering chart:', err);
+  }
 }
 renderChart();
 
